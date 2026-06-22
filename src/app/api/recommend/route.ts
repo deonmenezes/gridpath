@@ -6,6 +6,8 @@ import { NextResponse } from "next/server";
 import { buildSignals, fallbackPlan } from "@/lib/cleanenergy";
 import { fetchSolar } from "@/lib/google";
 import { recommendWithClaude } from "@/lib/claude";
+import { buildRoi, isSolarOption } from "@/lib/roi";
+import { roiNarrate } from "@/lib/roiNarrate";
 
 interface RecommendRequest {
   address?: string;
@@ -35,6 +37,23 @@ export async function POST(request: Request) {
 
     const claudePlan = await recommendWithClaude(signals);
     const plan = claudePlan ?? fallbackPlan(signals);
+
+    // "Is going solar worth it?" — compute the ROI deterministically from the
+    // recommended solar option (never from the LLM). Match by solar key/name so
+    // an LLM-renamed key (e.g. "solar") still resolves; only then fall back to
+    // the top-priority recommended option.
+    const solarOption =
+      plan.options.find(isSolarOption) ??
+      [...plan.options]
+        .filter((o) => o.recommended)
+        .sort((a, b) => a.priority - b.priority)[0];
+
+    if (solarOption) {
+      const roi = buildRoi(solarOption, signals);
+      // Optional plain-language framing; null without an Anthropic key.
+      roi.narrative = await roiNarrate(roi, signals);
+      plan.roi = roi;
+    }
 
     return NextResponse.json(plan);
   } catch (err) {

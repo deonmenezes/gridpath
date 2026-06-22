@@ -37,7 +37,10 @@ const PLAN_SCHEMA = {
         type: "object",
         additionalProperties: false,
         properties: {
-          key: { type: "string" },
+          key: {
+            type: "string",
+            enum: ["rooftop_solar", "battery", "heat_pump", "ev_charger"],
+          },
           name: { type: "string" },
           icon: { type: "string" },
           recommended: { type: "boolean" },

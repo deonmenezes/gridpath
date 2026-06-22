@@ -2149,3 +2149,584 @@ summary:focus-visible,
   font-weight: 400;
   color: var(--text-muted);
 }
+
+/* ---------------- ROI / "is it worth it?" analysis ---------------- */
+.roi {
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  background: var(--surface);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.roi-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.roi-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.roi-badge {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border-radius: var(--r-pill);
+  background: var(--amber-soft);
+  color: var(--amber);
+  border: 1px solid color-mix(in srgb, var(--amber) 26%, transparent);
+}
+.roi-lede {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text-body);
+}
+.roi-estimate-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--amber);
+  background: var(--amber-soft);
+  border: 1px solid color-mix(in srgb, var(--amber) 26%, transparent);
+  border-radius: var(--r-pill);
+  padding: 5px 11px;
+  align-self: flex-start;
+}
+.roi-estimate-note svg {
+  color: var(--amber);
+  flex-shrink: 0;
+}
+.roi-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.roi-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+}
+.roi-k {
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.roi-v {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: var(--font-display);
+}
+.roi-v.green {
+  color: var(--green);
+}
+.roi-sub {
+  font-size: 10.5px;
+  color: var(--text-muted);
+}
+.roi-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 4px;
+}
+.roi-axis {
+  font-size: 8px;
+  fill: var(--text-muted);
+  font-weight: 500;
+}
+.roi-narrative {
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--text-body);
+  background: var(--green-50);
+  border: 1px solid var(--green-100);
+  border-radius: var(--r-sm);
+  padding: 12px 14px;
+}
+.roi-sens-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+.roi-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.roi-table th {
+  text-align: left;
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+}
+.roi-table td {
+  padding: 7px 8px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-body);
+  font-weight: 500;
+}
+.roi-table tr:last-child td {
+  border-bottom: none;
+}
+.roi-table tr.base {
+  background: var(--green-50);
+}
+.roi-table tr.base td {
+  color: var(--text);
+  font-weight: 600;
+}
+.roi-confidence {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text-body);
+}
+.roi-confidence svg {
+  color: var(--green);
+  flex-shrink: 0;
+}
+.roi-confidence.low svg {
+  color: var(--amber);
+}
+.roi-assumptions {
+  font-size: 12px;
+}
+.roi-assumptions summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--green);
+  font-size: 12px;
+  list-style-position: inside;
+}
+.roi-assumptions ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.roi-disclaimer {
+  font-size: 10.5px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  border-top: 1px dashed var(--border-strong);
+  padding-top: 12px;
+}
+
+/* ---------------- Crypto checkout + risk badge ---------------- */
+.cc {
+  margin-top: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  background: var(--surface);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.cc-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+.cc-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+.cc-amount {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green);
+}
+.cc-risk {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cc-risk-note {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.cc-connectors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.cc-connect {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  padding: 9px 14px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.cc-connect:hover:not(:disabled) {
+  border-color: var(--green);
+  background: var(--green-50);
+}
+.cc-connect:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.cc-chains {
+  display: flex;
+  gap: 8px;
+}
+.cc-chain {
+  flex: 1;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-body);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  padding: 9px;
+  cursor: pointer;
+}
+.cc-chain.active {
+  border-color: var(--green);
+  background: var(--green-50);
+  color: var(--green);
+}
+.cc-pay {
+  width: 100%;
+  justify-content: center;
+}
+.cc-disconnect {
+  align-self: center;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.cc-error {
+  font-size: 12px;
+  color: #b4452f;
+  background: #fbeae6;
+  border: 1px solid #f0c4ba;
+  border-radius: var(--r-sm);
+  padding: 9px 12px;
+}
+.cc-foot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10.5px;
+  color: var(--text-muted);
+}
+.cc-paid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--green);
+}
+.cc-paid svg {
+  color: var(--green);
+}
+.cc-tx {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+  font-family: ui-monospace, monospace;
+}
+.risk-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border);
+}
+.risk-badge.good {
+  background: var(--green-50);
+  color: var(--green);
+  border-color: var(--green-100);
+}
+.risk-badge.mid {
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+.risk-badge.bad {
+  background: #fbeae6;
+  color: #b4452f;
+}
+.risk-badge.unrated {
+  background: var(--surface-2);
+  color: var(--text-muted);
+}
+
+/* ===== Investment risk — Clean-Connect Pool (Xerberus) ===== */
+.invrisk {
+  margin-top: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  padding: 16px 18px;
+}
+.invrisk.loading-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.invrisk-head {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.invrisk-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: var(--r-sm);
+  display: grid;
+  place-items: center;
+  background: var(--green-50);
+  color: var(--green);
+}
+.invrisk-title {
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--text);
+  line-height: 1.3;
+}
+.invrisk-sub {
+  margin-top: 4px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.invrisk-sub strong { color: var(--green); }
+
+.grade-chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 2px 10px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border);
+}
+.grade-chip.good { background: var(--green-50); color: var(--green); border-color: var(--green-100); }
+.grade-chip.mid { background: var(--amber-soft); color: var(--amber); }
+.grade-chip.bad { background: #fbeae6; color: #b4452f; border-color: #f3d6cd; }
+.grade-chip.unrated { background: var(--surface-2); color: var(--text-muted); }
+
+.invrisk-pool {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+.pool-grade,
+.pool-exit {
+  background: var(--surface-2);
+  border-radius: var(--r);
+  padding: 12px 14px;
+}
+.pool-grade-k {
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.pool-grade-v {
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pool-grade-v .grade-chip { font-size: 15px; padding: 3px 12px; }
+.pool-grade-pct { font-size: 12px; color: var(--text-body); }
+.pool-exit-v {
+  margin-top: 6px;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--text);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.pool-exit-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--danger);
+  background: #fbeae6;
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+}
+.pool-exit-sub {
+  margin-top: 5px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.invrisk-basket {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.basket-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12.5px;
+}
+.basket-w {
+  width: 38px;
+  font-weight: 800;
+  color: var(--text);
+  text-align: right;
+}
+.basket-sym { font-weight: 700; color: var(--text-body); width: 52px; }
+.basket-label { flex: 1; color: var(--text-muted); }
+
+.invrisk-toggle {
+  margin-top: 14px;
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 9px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--green);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.invrisk-toggle:hover { background: var(--green-50); border-color: var(--green-100); }
+
+.invrisk-block-title {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.invrisk-block-sub {
+  font-size: 10.5px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text-muted);
+}
+
+.invrisk-table { width: 100%; border-collapse: collapse; }
+.invrisk-table td {
+  padding: 9px 8px;
+  border-top: 1px solid var(--border);
+  vertical-align: top;
+  font-size: 12px;
+}
+.invrisk-table tr:first-child td { border-top: none; }
+.invrisk-table tr.baseline td { background: var(--green-50); }
+.cmp-opt { font-weight: 700; color: var(--text); }
+.cmp-detail { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+.cmp-grade { width: 56px; text-align: center; white-space: nowrap; }
+.cmp-note { color: var(--text-body); line-height: 1.4; }
+
+.invrisk-stress { display: flex; flex-direction: column; gap: 8px; }
+.stress-row { display: flex; align-items: center; gap: 10px; }
+.stress-meta { width: 130px; flex-shrink: 0; }
+.stress-label { display: block; font-size: 12px; font-weight: 600; color: var(--text); }
+.stress-period { font-size: 10.5px; color: var(--text-muted); }
+.stress-bartrack {
+  flex: 1;
+  height: 10px;
+  background: var(--surface-2);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+.stress-bar {
+  height: 100%;
+  border-radius: var(--r-pill);
+  background: linear-gradient(90deg, var(--amber), var(--danger));
+}
+.stress-loss { width: 48px; text-align: right; font-weight: 800; font-size: 12.5px; color: var(--danger); }
+
+.invrisk-foot {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.invrisk-source {
+  align-self: flex-start;
+  font-weight: 700;
+  color: var(--green);
+  background: var(--green-50);
+  border-radius: var(--r-pill);
+  padding: 2px 9px;
+  font-size: 10.5px;
+}
+
+@media (max-width: 560px) {
+  .invrisk-pool { grid-template-columns: 1fr; }
+  .stress-meta { width: 96px; }
+}

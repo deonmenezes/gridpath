@@ -1,0 +1,25 @@
+{
+  "_comment": "REAL Xerberus V7 data, captured from the MCP by scripts/snapshot-xerberus.mjs. mcp.xerberus.io sits behind a Cloudflare JS challenge that blocks datacenter egress (Vercel), so the deployed route serves this committed snapshot. Refresh with `npm run snapshot` from a machine that can reach the MCP. Xerberus updates on 12h windows, so a snapshot is as fresh as live for a demo.",
+  "capturedAt": "2026-06-22T17:05:48Z",
+  "window": "2026-06-21T12:00:00+00:00",
+  "tokens": {
+    "USDC": { "grade": "BB", "percentile": 0.8385, "description": "elevated relative risk" },
+    "rETH": { "grade": "CCC", "percentile": 0.9479, "description": "very high relative risk" },
+    "DAI": { "grade": "AAA", "percentile": 0.0, "description": "minimal relative risk" },
+    "wstETH": { "grade": "D", "percentile": 1.0, "description": "distressed (top-tier relative risk)" }
+  },
+  "exit": {
+    "rETH": { "maxSalePerDayUsd": 6060.665331051577, "refClassification": "moderate (<1 week)" }
+  },
+  "episodes": [
+    { "id": "terra_ust", "label": "UST collapse", "kind": "collapse", "period": "2022-05-08..2022-05-16", "basket": { "WETH": 28, "wstETH": 31, "WBTC": 25, "USDT": 5 } },
+    { "id": "steth_discount_2022", "label": "stETH discount / 3AC", "kind": "unwind", "period": "2022-06-10..2022-06-21", "basket": { "WETH": 35, "wstETH": 40, "WBTC": 33 } },
+    { "id": "ftx", "label": "FTX collapse", "kind": "collapse", "period": "2022-11-06..2022-11-14", "basket": { "WETH": 25, "WBTC": 23 } },
+    { "id": "usdc_depeg", "label": "USDC depeg (SVB)", "kind": "depeg", "period": "2023-03-10..2023-03-13", "basket": { "USDC": 12, "DAI": 8, "FRAX": 10 } },
+    { "id": "curve_reentrancy", "label": "Curve reentrancy", "kind": "hack", "period": "2023-07-30..2023-08-05", "basket": { "CRV": 20, "WETH": 4 } },
+    { "id": "ezeth_depeg", "label": "ezETH depeg", "kind": "depeg", "period": "2024-04-23..2024-04-25", "basket": { "ezETH": 22, "WETH": 5 } },
+    { "id": "carry_unwind_2024", "label": "Aug-24 carry unwind", "kind": "macro", "period": "2024-08-04..2024-08-06", "basket": { "WETH": 22, "WBTC": 16 } },
+    { "id": "bybit_hack", "label": "Bybit hack", "kind": "hack", "period": "2025-02-21..2025-02-21", "basket": { "WETH": 7 } },
+    { "id": "oct_2025_deleverage", "label": "Oct-25 deleverage", "kind": "unwind", "period": "2025-10-10..2025-10-12", "basket": { "WETH": 16, "WBTC": 13 } }
+  ]
+}

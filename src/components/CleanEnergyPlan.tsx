@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { formatUsd } from "@/lib/cost";
 import Icon, { type IconName } from "@/components/Icon";
+import RoiAnalysisView from "@/components/RoiAnalysis";
 import type { CleanEnergyPlan, GeocodeResult } from "@/lib/types";
 
 /** Map clean-energy option keys to geometric icons (avoids emoji from lib data). */
@@ -30,8 +31,8 @@ export default function CleanEnergyPlanView({ selected }: { selected: GeocodeRes
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ address: selected.label, lat: selected.lat, lon: selected.lon }),
         });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error ?? "Failed to build plan");
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error ?? res.statusText ?? "Failed to build plan");
         if (!cancelled) setPlan(data as CleanEnergyPlan);
       } catch (err) {
         if (!cancelled) setError(err instanceof Error ? err.message : "Something went wrong");
@@ -155,6 +156,8 @@ export default function CleanEnergyPlanView({ selected }: { selected: GeocodeRes
             </div>
             <div className="bundle-note">{plan.recommendedBundle.note}</div>
           </div>
+
+          {plan.roi && <RoiAnalysisView roi={plan.roi} />}
 
           {plan.signals.fromSolarApi && (
             <div className="src-note">Rooftop figures from Google Solar API for this address.</div>

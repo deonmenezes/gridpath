@@ -6,6 +6,8 @@ import Link from "next/link";
 import AddressSearch from "@/components/AddressSearch";
 import GovApplication from "@/components/GovApplication";
 import GrantsOffer from "@/components/GrantsOffer";
+import InvestmentRisk from "@/components/InvestmentRisk";
+import CryptoCheckout from "@/components/CryptoCheckout";
 import CallButton from "@/components/CallButton";
 import CleanEnergyPlanView from "@/components/CleanEnergyPlan";
 import { LogoFull } from "@/components/Logo";
@@ -228,6 +230,8 @@ export default function AppPage() {
 
                   <GrantsOffer estimate={estimate} />
 
+                  <InvestmentRisk estimate={estimate} />
+
                   <button className="btn gold" onClick={() => setStep("apply")}>
                     Apply for grants & connect <Icon name="arrow-right" size={16} />
                   </button>
@@ -236,7 +240,10 @@ export default function AppPage() {
               )}
 
               {!loading && !error && estimate && step === "apply" && (
-                <GovApplication estimate={estimate} onBack={() => setStep("estimate")} />
+                <>
+                  <GovApplication estimate={estimate} onBack={() => setStep("estimate")} />
+                  <CryptoCheckout amountUsd={500} label="Reserve your install (deposit)" />
+                </>
               )}
             </div>
           )}
